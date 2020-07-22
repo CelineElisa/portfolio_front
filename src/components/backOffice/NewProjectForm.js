@@ -10,7 +10,9 @@ function NewProjectForm({ setShowNewProjectModal }) {
         techno: 'non renseigné',
         url_pict: 'non renseigné',
         url_app: 'non renseigné',
-        description: 'non renseigné'
+        description: 'non renseigné',
+        url_pict2 : 'non renseigné',
+        url_pict3 : 'non renseigné'
       })
 
 
@@ -47,12 +49,20 @@ function NewProjectForm({ setShowNewProjectModal }) {
           <input type='text' name='techno' id='techno' className='form-input' onChange={handleChange} />
         </div>
         <div className='divForm'>
+          <label htmlFor='url_app'>lien du site</label>
+          <input type='text' name='url_app' id='url_app' className='form-input' onChange={handleChange} />
+        </div>
+        <div className='divForm'>
           <label htmlFor='url_pict'>lien de la Photo</label>
           <input type='text' name='url_pict' id='url_pict' className='form-input' onChange={handleChange} />
         </div>
         <div className='divForm'>
-          <label htmlFor='url_app'>lien du site</label>
-          <input type='text' name='url_app' id='url_app' className='form-input' onChange={handleChange} />
+          <label htmlFor='url_pict2'>lien de la Photo num 2</label>
+          <input type='text' name='url_pict2' id='url_pict2' className='form-input' onChange={handleChange} />
+        </div>
+        <div className='divForm'>
+          <label htmlFor='url_pict3'>lien de la Photo num 3</label>
+          <input type='text' name='url_pict3' id='url_pict3' className='form-input' onChange={handleChange} />
         </div>
       <div className='textareaForm'>
         <label htmlFor='description' className='message-flex'>Description</label>
