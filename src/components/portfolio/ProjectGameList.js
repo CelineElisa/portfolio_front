@@ -1,27 +1,27 @@
 import React, { useState } from "react";
-import PPHome from "../images/PPHome.png";
-import PPPhone from "../images/PPPhone.png";
-import PPResults from "../images/PPResults.png";
+import ListeJeuxHome from "../../images/ListeJeux.png";
+import ListeJeuxPhone from "../../images/ListeJeuxPhone.png";
+
 
 import "./Portfolio.css";
 
-const Projet2 = ({ setModal2, modal2 }) => {
+const ProjectGameList = ({ setModalGL, modalGL }) => {
   const [pict, setPict] = useState(1);
 
   const showPict = (arg) => {
-    if (arg === 1 && pict === 3) {
+    if (arg === 1 && pict === 2) {
       setPict(1);
     } else if (arg === -1 && pict === 1) {
-      setPict(3);
+      setPict(2);
     } else {
       setPict(pict + arg);
     }
   };
 
   return (
-    <div className={modal2 ? "active" : "nonActive"}>
+    <div className={modalGL ? "active" : "nonActive"}>
       <div className="divCloseModal">
-        <button className="closeModal" onClick={() => setModal2(false)}>
+        <button className="closeModal" onClick={() => setModalGL(false)}>
           {" "}
           &times;{" "}
         </button>
@@ -33,18 +33,13 @@ const Projet2 = ({ setModal2, modal2 }) => {
           </button>
           <img
             className={pict === 1 ? "carouselPict" : "nonActive"}
-            src={PPHome}
-            alt="Project pôle position"
+            src={ListeJeuxHome}
+            alt="Project liste de jeux phone"
           />
           <img
-            className={pict === 2 ? "carouselPict" : "nonActive"}
-            src={PPResults}
-            alt="Project pôle position"
-          />
-          <img
-            className={pict === 3 ? "carouselPict phonePict" : "nonActive"}
-            src={PPPhone}
-            alt="Project pôle position phone"
+            className={pict === 2 ? "carouselPict phonePict" : "nonActive"}
+            src={ListeJeuxPhone}
+            alt="Project liste de jeux phone"
           />
           <button className="buttonPict" onClick={() => showPict(1)}>
             &gt;
@@ -58,16 +53,16 @@ const Projet2 = ({ setModal2, modal2 }) => {
             &gt;
           </button>
          </div> 
-        <h3 className="projectH3">Pôle Position</h3>
+        <h3 className="projectH3">Liste de jeux</h3>
         <p className="projectText">
-          Projet de groupe. Site qui permet de trouver des offres d'emploi classées par temps de trajet grâce à l'utilisation des API Pôle emploi et Navitia.{" "}
+          Projet réalisé dans le cadre d'un exercice à la Wild Code School avec appel API.
         </p>
-        <a className="websiteLink" href="https://pole-position.netlify.app" target="blank">
-          Voir le site{" "}
+        <a className="websiteLink" href="https://liste-jeux.netlify.app" target="blank">
+          Voir le site
         </a>
       </div>
     </div>
   );
 };
 
-export default Projet2;
+export default ProjectGameList;

@@ -8,7 +8,7 @@
 .Home{
     background-image:   linear-gradient(to right, rgba(0, 46, 46, 1), rgba(0,46,46,0.7)),
     /*linear-gradient(to right, rgba(246, 0, 101, 0.4), rgba(0,200,204,0.4)),*/
-                        url("../images/web.jpg") ;
+                        url("../../images/web.jpg") ;
     
     /*background-color: rgb(37,40,52);*/
     /*background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),

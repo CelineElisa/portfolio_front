@@ -1,6 +1,6 @@
 import React from "react";
-import photoProfilNB from "../images/photoProfilNB.jpg";
-import MySQL from "../images/MySQL.svg";
+import photoProfilNB from "../../images/photoProfilNB.jpg";
+import MySQL from "../../images/MySQL.svg";
 import CV from "./CV.pdf";
 import { FiDownload } from "react-icons/fi";
 

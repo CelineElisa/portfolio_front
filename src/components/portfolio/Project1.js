@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import PixieWilderHome from "../images/PixieWilderHome.png";
-import PixieWilderDark from "../images/PixieWilderDark.png";
-import PixieWilderPhone from "../images/PixieWilderPhone.png";
+import PixieWilderHome from "../../images/PixieWilderHome.png";
+import PixieWilderDark from "../../images/PixieWilderDark.png";
+import PixieWilderPhone from "../../images/PixieWilderPhone.png";
 
 import "./Portfolio.css";
 

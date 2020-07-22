@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Project1 from "./Project1";
-import PixieWilderHome from "../images/PixieWilderHome.png";
-import ListeJeuxHome from "../images/ListeJeux.png";
+import PixieWilderHome from "../../images/PixieWilderHome.png";
+import ListeJeuxHome from "../../images/ListeJeux.png";
 import ProjectGameList from "./ProjectGameList";
-import PPHome from "../images/PPHome.png";
+import PPHome from "../../images/PPHome.png";
 import Project2 from "./Project2"
 
 import "./Portfolio.css";
