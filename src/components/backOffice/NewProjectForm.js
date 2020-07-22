@@ -3,7 +3,7 @@ import axios from 'axios'
 
 //import "./Footer.css";
 
-function NewProjectForm({ setShowNewProjectModal, ShowNewProjectModal }) {
+function NewProjectForm({ setShowNewProjectModal }) {
 
     const [data, setData] = useState({
         name: 'non renseigné',

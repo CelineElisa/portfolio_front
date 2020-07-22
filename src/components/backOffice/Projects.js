@@ -3,6 +3,7 @@ import axios from 'axios'
 
 import AdminNav from './AdminNav'
 import NewProjectForm from './NewProjectForm'
+import EditProjectForm from './EditProjectForm'
 
 //import "./Footer.css";
 
@@ -10,6 +11,8 @@ function Projects() {
 
   const [projects, setProjects] = useState(null)
   const [showNewProjectModal, setShowNewProjectModal] = useState(false)
+  const [showEditProjectModal, setShowEditProjectModal] = useState(false)
+  const [projectId, setProjectId] = useState(false)
 
   const getProjects = () => {
     axios.get('http://localhost:8080/api/projects').then((res) => setProjects(res.data))
@@ -29,18 +32,26 @@ function Projects() {
       }
   }
 
+  const handleEdit = (e) => {
+    setShowEditProjectModal(true)
+    setProjectId(e.target.id)
+  }
+
   useEffect(() => getProjects(), [])
 
   return projects ? ( showNewProjectModal ? (
-    <div><NewProjectForm setShowNewProjectModal={setShowNewProjectModal} showNewProjectModal={showNewProjectModal}/></div>
-    ) :(
+    <div><NewProjectForm setShowNewProjectModal={setShowNewProjectModal} /></div>
+    ) : ( showEditProjectModal ? (
+        <div><EditProjectForm setShowEditProjectModal={setShowEditProjectModal} projectId={projectId} /></div>
+    ) :
     <div className='adminHome'>
       <AdminNav />
       <h2>Mes projets</h2>
       {projects.map( project => (
           <div key={project.id} >
               {project.id}, {project.name}, {project.techno} 
-              <button id={project.id} onClick={handleDelete}> supprimer </button>
+              <button id={project.id} onClick={handleDelete}> Supprimer </button>
+              <button id={project.id} onClick={handleEdit}> Editer </button>
           </div>
       ))}
       <button onClick={() => setShowNewProjectModal(true)}>ajouter un projet</button>
