@@ -1,0 +1,143 @@
+
+.about{
+    margin : 20px 0;
+}
+.aboutH2{
+    text-align: center;
+    margin-bottom: 20px ;
+    font-size: 40px;
+    color : rgb(70,70,70);
+    border-bottom: solid  3px rgb(70,70,70);
+    width : 170px;
+    padding-bottom: 25px;
+    margin: 0 auto;
+}
+.iconesTech{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly ;
+    margin:50px 0;
+    flex-wrap: wrap;
+}
+.iconTech{
+    height:70px;
+}
+.profileAndCompetencies{
+    display : flex;
+    flex-direction: row;
+    width: 90%;
+    margin: 0 auto;
+}
+.profile{
+    display : flex;
+    flex-direction: column;
+    width: 20%;
+    align-items: center;
+    margin : 20px;
+}
+.profilePict{
+    height: 150px;
+    width: 150px;
+    border-radius: 100px;
+}
+
+
+.profileText{
+    text-align: justify;
+    margin : 10px 0;
+    font-size: 18px;
+}
+.profileTech{
+    margin : 10px 0;
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+}
+.aAbout{
+    color:black;
+}
+
+.aboutRight{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding :0 20px;
+    margin-left : 50px;
+
+}
+.contactAndDown{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.contactMe{
+    font-size: 18px;
+}
+.contactMeH3, .techH3{
+    margin-bottom: 5px;
+    font-size: 20px;
+    color:  rgb(0,200,204);
+}
+.downloadCV{
+    text-decoration: none;
+    border : solid 2px  rgb(0,200,204);
+    padding : 10px;
+    color : black;
+    border-radius: 4px;
+    font-size: 18px;
+}
+
+.downloadCV:hover{
+    background-color:rgb(0,200,204) ;
+    color: white;
+}
+.downloadCVDiv{
+    margin : 20px 0;
+}
+
+
+
+@media screen and (max-width: 1150px){
+    .profileAndCompetencies{
+        width: 95%; 
+    }
+    .aboutRight{
+        width: 80%;
+        margin-left : 0px;
+    }
+}
+
+@media screen and (max-width: 920px){
+  
+    .contactAndDown{
+        display: flex;
+        flex-direction: column;
+    }
+    .downloadCVDiv{
+        margin : 30px 0;
+        width: 100%;
+        display: flex;
+        justify-content: left;
+    }
+}
+
+
+
+@media screen and (max-width: 700px){
+    .profileAndCompetencies{
+        flex-direction: column;
+        align-items: center;
+    }
+    .profile{
+        width: 100%;
+    }
+    .aboutRight{
+        width: 100%;
+        align-items: center;
+    }
+    .downloadCVDiv{
+        margin : 30px 0;
+        justify-content: center;
+    }
+}

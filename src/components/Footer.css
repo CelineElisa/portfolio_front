@@ -1,0 +1,42 @@
+.footer{
+    background-color: rgb(26, 35, 47);
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footerLinkHome{
+    font-size: 30px;
+    color:white;
+}
+
+.linksFooter{
+    margin : 20px;
+    display : flex;
+    flex-direction: row;
+}
+
+.linkFooter{
+    display : flex;
+    flex-direction: row;
+    color : white;
+    margin : 0 10px;
+    text-decoration: none;
+}
+
+.iconFooter{
+    height: 20px;
+    margin : 0 5px 0px 0;
+    padding : 0 0 3.5px 0;
+}
+
+.footerLinkHome{
+  background-color:rgb(246,0,101);
+  padding: 5px 10px;
+  border-radius: 2px;
+}
+
+.pFooter{
+    color : white;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,187 @@
+.Portfolio{
+    margin-top: 50px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(245,245,245);
+    padding-bottom: 50px;
+}
+
+.portfolioH2{
+    font-size: 40px;
+    text-align: center;
+    color: rgb(70,70,70);
+    border-bottom: solid  3px rgb(70,70,70);
+    width : 170px;
+    padding-bottom: 25px;
+}
+
+.cardsContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 30px;
+}
+.card{
+    background-color:white;
+    margin: 20px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.cardPict{
+    width : 380px;
+    margin:  0px auto 0 auto;
+}
+.cardH3{
+    text-align: center;
+    margin : 10px auto;
+    font-size: 20px;
+    color: rgb(246,0,101);
+}
+.cardText{
+    text-align: center;
+    font-size: 18px;
+    color: black;
+}
+.cardButton{
+    margin: 10px auto;
+    background-color: white;
+    padding: 5px;
+    border-radius: 4px ;
+    border :solid 2px rgb(246,0,101);
+    font-size: 18px;
+    color: black;
+}
+.cardButton:hover{
+    background-color:rgb(246,0,101);
+    color: white;
+}
+
+.nonActive{
+    display : none;
+}
+
+.active{
+    background-color:rgb(245,245,245);
+    position: fixed;
+    height : 100vh;
+    top : 0;
+    left : 0;
+    right : 0;
+    z-index: 1;
+    display : flex;
+    flex-direction: column;
+}
+
+.divCloseModal{
+    display : flex;
+    justify-content: flex-end;
+}
+
+.closeModal{
+    height: 50px;
+    background-color : rgba(0,0,0,0.0);
+    color : rgb(70,70,70);
+    padding-right: 10px;
+    font-size: 50px;
+    border : none;
+}
+
+.modalContent{
+    height: 90%;
+    width: 80%;
+    margin :0 auto 50px auto;
+    border-radius: 5px;
+    background-color:rgb(245,245,245);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.carousel{
+    display: flex;
+    flex-direction: row;
+    margin : 20px;
+}
+.carouselPict{
+    height: 400px;
+}
+.buttonPict{
+    border : none;
+    font-size : 40px; 
+    width: 40px;
+    background-color: white;
+    color : rgb(70,70,70);
+}
+.buttonsPictPhone{
+    display:none;
+}
+
+.projectH3{
+    font-size: 25px;
+    color: rgb(246,0,101);
+}
+
+.projectText{
+    margin : 20px;
+    font-size: 18px;
+}
+
+.websiteLink{
+    margin: 10px auto;
+    background-color: rgb(245,245,245);
+    padding: 5px;
+    border-radius: 4px ;
+    border :solid 2px rgb(246,0,101);
+    font-size: 18px;
+    color: black;
+    text-decoration: none;
+}
+.websiteLink:hover{
+    background-color:rgb(246,0,101);
+    color: white;
+}
+
+@media screen and (max-width: 700px){
+   .card{
+       width: 100%;
+       height : 350px;
+       margin : 20px 0;
+   }
+   .cardPict{
+    width : 100%;
+    margin:  10px auto 0 auto;
+    }
+    .modalContent{
+        width: 100%;
+    }
+    .carousel{
+        display: flex;
+        flex-direction: row;
+        margin : 20px auto;
+    }
+    .carouselPict{
+        height: auto;
+        width : 100%;
+    }
+    .phonePict{
+        width: auto;
+        height : 250px;
+    }
+    .buttonPict{
+        display: none;
+    }
+    .buttonsPictPhone{
+        display:flex;
+        margin-bottom: 20px;
+    }
+    .buttonPictPhone{
+        width: 50px;
+        height : 50px;
+    }
+    
+  }
+  

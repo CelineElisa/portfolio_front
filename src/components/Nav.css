@@ -1,0 +1,66 @@
+.Nav{
+    background-color: rgb(26, 35, 47);
+    color : white;
+    font-size: 20px;
+    border-bottom: solid 1.5px rgb(0,200,204);
+    position : fixed;
+    width: 100%;
+}
+
+.navUl{
+    display: flex;
+    flex-direction: row;
+}
+
+.navLi{
+    padding :13px 20px;
+    list-style-type: none;
+}
+
+.navLink{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+.navLink:hover{
+    color:rgb(246,0,101);
+}
+
+.HomeName{
+    color:rgb(246,0,101);
+}
+
+.icon1{
+    padding-right : 4px;
+    padding-bottom: 1px;
+}
+
+.icon3{
+    padding-right : 6px;
+}
+
+.icon4{
+    padding-right : 4px;
+}
+
+
+@media screen and (max-width: 700px){
+  .navLi{
+      padding: 13px 0;
+  }
+  .navLink{
+      flex-direction: column;
+  }
+  .navP{
+      font-size:14px ;
+  }
+  .icon1, .icon3, .icon4{
+    padding-right : 0px;
+  }
+  .navUl{
+      justify-content: space-evenly;
+  }
+}
