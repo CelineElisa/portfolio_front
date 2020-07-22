@@ -1,13 +1,15 @@
 import React from "react";
+import AdminNav from "./AdminNav"
 
 //import "./Footer.css";
 
-function AppAdmin() {
+function AdminHome() {
   return (
     <div className="adminHome">
+     <AdminNav/>
      <h2>Admin Home</h2>
     </div>
   );
 }
 
-export default AppAdmin;
+export default AdminHome;

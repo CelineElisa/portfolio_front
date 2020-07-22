@@ -1,7 +1,8 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom'
 import AppPortfolio from './components/portfolio/AppPortfolio'
-import AppAdmin from './components/backOffice/AppAdmin'
+import AdminHome from './components/backOffice/AdminHome'
+import Projects from './components/backOffice/Projects'
 import './App.css';
 
 
@@ -9,8 +10,9 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/" component = {AppPortfolio}/>
-        <Route exact path="/cc-admin" component = {AppAdmin}/>
+        <Route path="/cc-admin/mes-projets" component = {Projects}/>
+        <Route path="/cc-admin" component = {AdminHome}/>
+        <Route path="/" component = {AppPortfolio}/>
       </Switch>
     </div>
   );
