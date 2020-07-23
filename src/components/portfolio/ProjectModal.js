@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import PixieWilderHome from "../../images/PixieWilderHome.png";
-import PixieWilderDark from "../../images/PixieWilderDark.png";
-import PixieWilderPhone from "../../images/PixieWilderPhone.png";
 
 import "./Portfolio.css";
 
-const Projet1 = ({ setModal, modal }) => {
+const ProjectModal = ({ setModal, modal, project }) => {
   const [pict, setPict] = useState(1);
 
   const showPict = (arg) => {
-    if (arg === 1 && pict === 3) {
+    let nbPicts
+
+    if (project.url_pict3 === null ){
+       nbPicts = 2
+    } else {
+       nbPicts = 3
+    }
+
+    if (arg === 1 && pict === nbPicts) {
       setPict(1);
     } else if (arg === -1 && pict === 1) {
-      setPict(3);
+      setPict(nbPicts);
     } else {
       setPict(pict + arg);
     }
@@ -33,17 +38,17 @@ const Projet1 = ({ setModal, modal }) => {
           </button>
           <img
             className={pict === 1 ? "carouselPict" : "nonActive"}
-            src={PixieWilderHome}
+            src={`images/${project.url_pict}`}
             alt="Project Pixie Wilders"
           />
           <img
             className={pict === 2 ? "carouselPict" : "nonActive"}
-            src={PixieWilderDark}
+            src={`images/${project.url_pict2}`}
             alt="Project Pixie Wilders"
           />
           <img
             className={pict === 3 ? "carouselPict phonePict" : "nonActive"}
-            src={PixieWilderPhone}
+            src={`images/${project.url_pict3}`}
             alt="Project Pixie Wilders phone"
           />
           <button className="buttonPict" onClick={() => showPict(1)}>
@@ -58,17 +63,14 @@ const Projet1 = ({ setModal, modal }) => {
             &gt;
           </button>
          </div> 
-        <h3 className="projectH3">Pixie Wilders</h3>
-        <p className="projectText">
-          Projet de groupe. Site qui met en avant des photographes
-          proposant de la prestation de service.{" "}
-        </p>
-        <a className="websiteLink" href="https://celineelisa.github.io/PixieWilder/" target="blank">
+        <h3 className="projectH3">{project.name}</h3>
+        <p className="projectText">{project.description}</p>
+        <a className="websiteLink" href={project.url_app} target="blank">
           Voir le site{" "}
         </a>
       </div>
     </div>
-  );
+  ) 
 };
 
-export default Projet1;
+export default ProjectModal;
