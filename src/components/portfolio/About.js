@@ -1,13 +1,23 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import axios from 'axios'
+
 import photoProfilNB from "../../images/photoProfilNB.jpg";
 import MySQL from "../../images/MySQL.svg";
 import CV from "./CV.pdf";
 import { FiDownload } from "react-icons/fi";
 
-
 import "./About.css";
 
 function About() {
+
+  const [profile, setProfile] = useState(null)
+
+  const getProfile = () => {
+    axios.get('http://localhost:8080/api/profile').then((res) => setProfile(res.data))
+  }
+
+  useEffect(() => getProfile(), [])
+
   return (
     <div className="about" id="about">
       <h2 className="aboutH2">A propos</h2>
@@ -48,33 +58,30 @@ function About() {
           alt="Logo Git"
         />
       </div>
+      {profile ? (
       <div className="profileAndCompetencies">
         <div className="profile">
-              <img className="profilePict" src={photoProfilNB} alt="profile"/>
+              <img className="profilePict" src={`images/${profile.profile_pict}`} alt="profile"/>
         </div>
           <div className="aboutRight">
-            <p className="profileText">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
+            <p className="profileText">{profile.description}</p>
             <div className="profileTech">
                 <h3 className="techH3"> Technologies : </h3> 
-                <p>HTML/CSS, JavaScript ES6, React, Node.js, MySQL, Git</p>
+                <p>{profile.techno}</p>
             </div>
             <div className="contactAndDown">
                 <div className="contactMe">
                       <h3 className="contactMeH3">Me contacter :</h3>
-                      <p> cottier.celine@gmail.com</p>
-                      <p>Linkedin : <a className="aAbout" href="https://www.linkedin.com/in/céline-cottier" target="blank">www.linkedin.com/in/céline-cottier</a></p>
+                      <p>{profile.email}</p>
+                      <p>Linkedin : <a className="aAbout" href={profile.linkedin} target="blank">www.linkedin.com/in/céline-cottier</a></p>
                </div>
                <div className="downloadCVDiv">
-                <a  href={CV} target="blank" className="downloadCV" ><FiDownload/> Télécharger mon CV </a>
+                <a  href={`${profile.cv}`} target="blank" className="downloadCV" ><FiDownload/> Télécharger mon CV </a>
               </div>
             </div>
           </div>
         </div>
+      ):('loading')}
     </div>
   );
 }
