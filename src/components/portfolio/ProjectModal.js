@@ -38,7 +38,6 @@ const ProjectModal = ({ setModal, modal, project, screenshots }) => {
              src={`images/${screenshot.url}`}
              alt={screenshot.name}
            />
-           {console.log(screenshot.url)}
            </div>
           ))}
           {/* <img
