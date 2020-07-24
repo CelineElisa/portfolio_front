@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-// import Projects from './Projects'
 
 //import "./Footer.css";
 
@@ -8,7 +7,6 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
   const [data, setData] = useState(null)
   const [screenshots, setScreenshots] = useState(null)
   const [showAddScreen, setShowAddScreen] = useState(false)
- 
   const [newScreenshot, setNewScreenShot] = useState({
     name: '',
     url: '',
@@ -44,22 +42,15 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
   }
 
   const handleChangeScreenshot = (e, field) => {
-    console.log(field)
+    // console.log(field)
     const upScreenId = parseInt(e.target.name)
-    // const upScreenField = e.target.id
     const upScreenValue = e.target.value
-    // const upScreen = {
-    //   id : upScreenId,
-    //   [ upScreenField ] : upScreenValue
-    // }
-    //console.log(upScreen)
     const index = screenshots.findIndex((project) => project.id === upScreenId)
-    console.log(index)
+    //console.log(index)
     const screenshotsTemp = [...screenshots]
-    console.log('screen temp', screenshotsTemp)
+    //console.log('screen temp', screenshotsTemp)
     screenshotsTemp[index][field]= upScreenValue
-    //setScreenshots(screenshotsTemp)
-    console.log('state', screenshots)
+    //console.log('state', screenshots)
   }
 
   const handleEditScreenshot = (e) => {
@@ -157,7 +148,7 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
               onChange={handleChange}
             />
           </div>
-          <div className='divForm'>
+          {/* <div className='divForm'>
             <label htmlFor='url_pict2'>lien de la Photo num 2</label>
             <input
               type='text'
@@ -178,7 +169,7 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
               className='form-input'
               onChange={handleChange}
             />
-          </div>
+          </div> */}
           <div className='textareaForm'>
             <label htmlFor='description' className='message-flex'>
               Description
@@ -265,9 +256,7 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
        </button>
        </div>
       ) : (<></>)}
-
         </div>
-
       ) : (
       <></>
       )}

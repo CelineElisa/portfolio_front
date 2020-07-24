@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 
-// import { FiMail } from "react-icons/fi";
 // import './Nav.css'
  
 function AdminNav() {

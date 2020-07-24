@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 import AdminNav from './AdminNav'
 import NewProjectForm from './NewProjectForm'
 import EditProjectForm from './EditProjectForm'
@@ -20,16 +20,16 @@ function Projects() {
 
   const handleDelete = (e) => {
       const answer = window.confirm('Etes vous sûr de vouloir supprimer ce projet ?')
-      console.log(e.target.id)
+      //console.log(e.target.id)
       if (answer){
         const idProject = e.target.id
-          console.log('je veux supprimer ce projet')
+          //console.log('je veux supprimer ce projet')
           axios.delete(`http://localhost:8080/api/projects/${idProject}`)
           .then((res) => alert('Le projet a été supprimé'))
-          
-      } else {
-        console.log('je ne veux pas supprimer ce projet !!!!')
       }
+      //  else {
+      //   console.log('je ne veux pas supprimer ce projet !!!!')
+      // }
   }
 
   const handleEdit = (e) => {

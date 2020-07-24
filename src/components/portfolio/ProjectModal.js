@@ -1,23 +1,14 @@
 import React, { useState, useEffect } from "react"
-import axios from 'axios'
 
 import "./Portfolio.css";
 
 const ProjectModal = ({ setModal, modal, project, screenshots }) => {
   const [pict, setPict] = useState(1);
-  //const [screenshots, setScreenshots] = useState(null)
-  
-
+ 
   const showPict = (arg) => {
     let nbPicts = screenshots.length
-    console.log(nbPicts)
-
-    // if (project.url_pict3 === null ){
-    //    nbPicts = 2
-    // } else {
-    //    nbPicts = 3
-    // }
-    console.log(pict)
+    // console.log(nbPicts)
+    // console.log(pict)
     if (arg === 1 && pict === nbPicts) {
       setPict(1);
     } else if (arg === -1 && pict === 1) {
@@ -26,12 +17,6 @@ const ProjectModal = ({ setModal, modal, project, screenshots }) => {
       setPict(pict + arg);
     }
   };
-
-  // const getScreenshots = () => {
-  //   axios.get(`http://localhost:8080/api/screenshots/${project.id}`).then((res) => setScreenshots(res.data))
-  // }
-
-  // useEffect(() => getScreenshots(), [])
 
   return (
     <div className={modal ? "active" : "nonActive"}>
@@ -89,7 +74,7 @@ const ProjectModal = ({ setModal, modal, project, screenshots }) => {
           Voir le site{" "}
         </a>
       </div>
-      {console.log(screenshots)}
+      {/* {console.log(screenshots)} */}
     </div>
   ) 
 };

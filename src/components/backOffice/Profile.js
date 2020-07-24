@@ -14,13 +14,13 @@ const [data, setData] = useState(null)
   }
 
   const handleChange = (e) => {
-    console.log('form changed')
+    //console.log('form changed')
     const { name, value } = e.target
     setData({ ...data, [name]: value })
 }
 
   const handleSubmit = (e) => {
-    console.log("formulaire soumis")
+    //console.log("formulaire soumis")
     e.preventDefault()
   axios
     .put(`http://localhost:8080/api/profile/1`, data)
@@ -69,7 +69,7 @@ useEffect(() => getProfile(), [])
         <input type='submit' value='ENVOYER' className='button-send' />
     </div>
   </form>
-        {console.log(data)}
+       {/* {console.log(data)} */}
     </div>
   ) : ("loading")
 }

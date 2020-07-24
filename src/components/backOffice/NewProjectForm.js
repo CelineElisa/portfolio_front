@@ -15,9 +15,8 @@ function NewProjectForm({ setShowNewProjectModal }) {
         url_pict3 : 'non renseigné'
       })
 
-
   const handleSubmit = (e) => {
-      console.log("formulaire soumis")
+      //console.log("formulaire soumis")
       e.preventDefault()
     axios
       .post('http://localhost:8080/api/projects', data)
@@ -27,7 +26,7 @@ function NewProjectForm({ setShowNewProjectModal }) {
   }
 
   const handleChange = (e) => {
-      console.log('form changed')
+      //console.log('form changed')
       const { name, value } = e.target
       setData({ ...data, [name]: value })
   }
@@ -53,24 +52,24 @@ function NewProjectForm({ setShowNewProjectModal }) {
           <input type='text' name='url_app' id='url_app' className='form-input' onChange={handleChange} />
         </div>
         <div className='divForm'>
-          <label htmlFor='url_pict'>lien de la Photo</label>
+          <label htmlFor='url_pict'>Photo principale</label>
           <input type='text' name='url_pict' id='url_pict' className='form-input' onChange={handleChange} />
         </div>
-        <div className='divForm'>
+        {/* <div className='divForm'>
           <label htmlFor='url_pict2'>lien de la Photo num 2</label>
           <input type='text' name='url_pict2' id='url_pict2' className='form-input' onChange={handleChange} />
         </div>
         <div className='divForm'>
           <label htmlFor='url_pict3'>lien de la Photo num 3</label>
           <input type='text' name='url_pict3' id='url_pict3' className='form-input' onChange={handleChange} />
-        </div>
+        </div> */}
       <div className='textareaForm'>
         <label htmlFor='description' className='message-flex'>Description</label>
         <textarea name='description' id='description' className='form-textarea' onChange={handleChange} /><br />
      </div>
         <input type='submit' value='ENVOYER' className='button-send' />
     </div>
-    {console.log(data)}
+    {/* {console.log(data)} */}
   </form>
   </div>
   )
