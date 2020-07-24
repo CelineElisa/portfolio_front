@@ -1,19 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"
+import axios from 'axios'
 
 import "./Portfolio.css";
 
-const ProjectModal = ({ setModal, modal, project }) => {
+const ProjectModal = ({ setModal, modal, project, screenshots }) => {
   const [pict, setPict] = useState(1);
+  //const [screenshots, setScreenshots] = useState(null)
+  
 
   const showPict = (arg) => {
-    let nbPicts
+    let nbPicts = screenshots.length
+    console.log(nbPicts)
 
-    if (project.url_pict3 === null ){
-       nbPicts = 2
-    } else {
-       nbPicts = 3
-    }
-
+    // if (project.url_pict3 === null ){
+    //    nbPicts = 2
+    // } else {
+    //    nbPicts = 3
+    // }
+    console.log(pict)
     if (arg === 1 && pict === nbPicts) {
       setPict(1);
     } else if (arg === -1 && pict === 1) {
@@ -22,6 +26,12 @@ const ProjectModal = ({ setModal, modal, project }) => {
       setPict(pict + arg);
     }
   };
+
+  // const getScreenshots = () => {
+  //   axios.get(`http://localhost:8080/api/screenshots/${project.id}`).then((res) => setScreenshots(res.data))
+  // }
+
+  // useEffect(() => getScreenshots(), [])
 
   return (
     <div className={modal ? "active" : "nonActive"}>
@@ -36,7 +46,17 @@ const ProjectModal = ({ setModal, modal, project }) => {
           <button className="buttonPict" onClick={() => showPict(-1)}>
             &lt;
           </button>
-          <img
+          {screenshots.map( screenshot => (
+            <div>
+             <img
+             className={pict === screenshot.id_carousel ? "carouselPict" : "nonActive"}
+             src={`images/${screenshot.url}`}
+             alt={screenshot.name}
+           />
+           {console.log(screenshot.url)}
+           </div>
+          ))}
+          {/* <img
             className={pict === 1 ? "carouselPict" : "nonActive"}
             src={`images/${project.url_pict}`}
             alt="Project Pixie Wilders"
@@ -50,7 +70,7 @@ const ProjectModal = ({ setModal, modal, project }) => {
             className={pict === 3 ? "carouselPict phonePict" : "nonActive"}
             src={`images/${project.url_pict3}`}
             alt="Project Pixie Wilders phone"
-          />
+          /> */}
           <button className="buttonPict" onClick={() => showPict(1)}>
             &gt;
           </button>
@@ -69,6 +89,7 @@ const ProjectModal = ({ setModal, modal, project }) => {
           Voir le site{" "}
         </a>
       </div>
+      {console.log(screenshots)}
     </div>
   ) 
 };

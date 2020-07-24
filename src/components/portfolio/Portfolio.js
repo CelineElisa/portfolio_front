@@ -10,9 +10,14 @@ const About = () => {
   const [projects, setProjects] = useState(null)
   const [project, setProject] = useState(null)
   const [modal, setModal] = useState(false)
+  const [screenshots, setScreenshots] = useState(null)
+  const [screensProject, setScreensProject] = useState(null)
  
   const getProjects = () => {
     axios.get('http://localhost:8080/api/projects').then((res) => setProjects(res.data))
+  }
+  const getScreenshots = () => {
+    axios.get(`http://localhost:8080/api/screenshots/`).then((res) => setScreenshots(res.data))
   }
 
   const handleModal = (e) => {
@@ -20,9 +25,16 @@ const About = () => {
     let projectTemp = projects
     projectTemp = projectTemp.filter( project => ( project.id === parseInt(e.target.id) ))
     setProject(projectTemp)
+    let screensProjectTemp = screenshots
+    screensProjectTemp = screensProjectTemp.filter( screenshot => (screenshot.id_project === parseInt(e.target.id)) )
+    for (let i=0 ; i < screensProjectTemp.length ; i++){
+      screensProjectTemp[i].id_carousel = i+1
+    }
+    setScreensProject(screensProjectTemp)
   }
 
   useEffect(() => getProjects(), [])
+  useEffect(() => getScreenshots(), [])
 
   return projects ? ( 
     <div className="Portfolio" id="Portfolio">
@@ -38,9 +50,10 @@ const About = () => {
            ))}
       </div>
           { project ?
-          <ProjectModal setModal={setModal} modal={modal} project={project[0]}/>
+          <ProjectModal setModal={setModal} modal={modal} project={project[0]} screenshots={screensProject}/>
           : <></>
           }
+          {/* {console.log(screensProject)} */}
     </div>
   ) : ("loading")
 }

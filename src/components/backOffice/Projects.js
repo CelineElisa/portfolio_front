@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-
+import { Link } from 'react-router-dom'
 import AdminNav from './AdminNav'
 import NewProjectForm from './NewProjectForm'
 import EditProjectForm from './EditProjectForm'
@@ -55,7 +55,7 @@ function Projects() {
           </div>
       ))}
       <button onClick={() => setShowNewProjectModal(true)}>ajouter un projet</button>
-      {console.log(projects)}
+      {/* {console.log(projects)} */}
     </div>
   )
   ) : "loading"

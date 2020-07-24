@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios'
 
-import photoProfilNB from "../../images/photoProfilNB.jpg";
 import MySQL from "../../images/MySQL.svg";
-import CV from "./CV.pdf";
 import { FiDownload } from "react-icons/fi";
 
 import "./About.css";
@@ -73,7 +71,7 @@ function About() {
                 <div className="contactMe">
                       <h3 className="contactMeH3">Me contacter :</h3>
                       <p>{profile.email}</p>
-                      <p>Linkedin : <a className="aAbout" href={profile.linkedin} target="blank">www.linkedin.com/in/céline-cottier</a></p>
+                      <p>Linkedin : <a className="aAbout" href={profile.linkedin} target="blank">https://www.linkedin.com/in/céline-cottier/</a></p>
                </div>
                <div className="downloadCVDiv">
                 <a  href={`${profile.cv}`} target="blank" className="downloadCV" ><FiDownload/> Télécharger mon CV </a>
