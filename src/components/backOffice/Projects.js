@@ -22,6 +22,11 @@ function Projects() {
       if (answer){
         const idProject = e.target.id
           axios.delete(`http://localhost:8080/api/projects/${idProject}`)
+          .then((res)=>{
+            let projectsTemp = [...projects]
+            projectsTemp = projectsTemp.filter(projects => projects.id !== parseInt(idProject))
+            setProjects(projectsTemp)
+          })
           .then((res) => alert('Le projet a été supprimé'))
       }
   }
@@ -34,7 +39,7 @@ function Projects() {
   useEffect(() => getProjects(), [])
 
   return projects ? ( showNewProjectModal ? (
-    <div><NewProjectForm setShowNewProjectModal={setShowNewProjectModal} /></div>
+    <div><NewProjectForm setShowNewProjectModal={setShowNewProjectModal} projects={projects} setProjects={setProjects}/></div>
     ) : ( showEditProjectModal ? (
         <div><EditProjectForm setShowEditProjectModal={setShowEditProjectModal} projectId={projectId} /></div>
     ) :

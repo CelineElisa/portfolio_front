@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import './NewProject.css'
 
-function NewProjectForm({ setShowNewProjectModal }) {
+function NewProjectForm({ setShowNewProjectModal, projects, setProjects }) {
   const [data, setData] = useState({
     name: 'non renseigné',
     techno: 'non renseigné',
@@ -16,6 +16,11 @@ function NewProjectForm({ setShowNewProjectModal }) {
     e.preventDefault()
     axios
       .post('http://localhost:8080/api/projects', data)
+      .then((res) => {
+        let projectsTemp = [...projects]
+        projectsTemp.push(res.data)
+        setProjects(projectsTemp)
+      })
       .then((res) => alert(`Nouveau projet ajouté`))
       .catch((err) => alert(`erreur : ${err.response.data} `))
   }
