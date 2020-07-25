@@ -1,0 +1,22 @@
+.adminNav{
+    background-color: blue;
+    min-height: 100vh;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+}
+.adminNavLink{
+    text-decoration: none;
+    color :black;
+}
+.adminNavLink:hover{
+    color : white;
+}
+.adminNavLi{
+    margin: 10px 0;
+    list-style-type: none;
+    font-size: 20px;
+}
+.adminNavUl{
+    margin-top: 30px;
+}

@@ -1,5 +1,4 @@
 import React, { useState }  from "react";
-// import imageHome from "../images/fond14.png";
 import { BsArrowRight,BsArrowDown } from "react-icons/bs";
 
 import './Home.css'
@@ -10,7 +9,6 @@ function Home() {
 
     return (
       <div className="Home" id="Home">
-         {/*<img className="HomeImage" src={imageHome}/>*/}
          <div className="HomeText">
             <div className="HomeText1">
               <h2 className="HomeH21">Bienvenue, &nbsp;</h2> <h2 className="HomeH22"> je suis <span className="HomeName">Céline Cottier</span>, </h2>

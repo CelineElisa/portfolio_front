@@ -1,0 +1,45 @@
+.adminProjects{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.adminProjectsContainer{
+    width : 100%;
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0px;
+
+}
+
+.adminProjectsContainer2{
+    width: 800px;
+    display : flex;
+    flex-direction: column;
+}
+
+.h2Projects{
+    text-align: center;
+    margin : 20px 0;
+}
+
+.projectDiv{
+    margin : 10px 0 10px 10px;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.buttonProject{
+    margin-right: 10px;
+    width : 90px;
+}
+
+.buttonNewProject{
+    width: 190px;
+    margin-top: 20px;
+    align-self: flex-end;
+    margin-right: 10px;
+}

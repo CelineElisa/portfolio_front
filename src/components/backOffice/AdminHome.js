@@ -1,13 +1,15 @@
 import React from "react";
 import AdminNav from "./AdminNav"
 
-//import "./Footer.css";
+import "./AdminHome.css";
 
 function AdminHome() {
   return (
     <div className="adminHome">
      <AdminNav/>
-     <h2>Admin Home</h2>
+     <div className="adminHomeDiv">
+     <h2 className="h2AdminHome">Bienvenue sur la partie administrateur</h2>
+     </div>
     </div>
   );
 }

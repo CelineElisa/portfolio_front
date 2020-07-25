@@ -1,0 +1,42 @@
+.adminProfile{
+    display : flex;
+    flex-direction: row;
+}
+
+.formTitle{
+    text-align: center;
+    margin : 20px 0;
+}
+
+.profileFormContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.divForm{
+    display: flex;
+    flex-direction: column;
+    margin : 10px 0;
+}
+
+.textareaForm{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+ 
+.form-textarea{
+    height : 100px;
+}
+
+.form{
+    width : 500px;
+}
+.form-container{
+    display : flex;
+    flex-direction: column;
+}
+.button-send{
+    align-self: flex-end ;
+}

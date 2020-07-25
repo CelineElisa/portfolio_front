@@ -1,0 +1,12 @@
+.adminHome{
+    display: flex;
+    flex-direction: row;
+}
+.h2AdminHome{
+    text-align: center;
+    width: 100%;
+    margin : 20px 0;
+}
+.adminHomeDiv{
+    width: 100%;
+}

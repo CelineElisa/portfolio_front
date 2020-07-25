@@ -1,0 +1,70 @@
+.EditProject{
+    display : flex;
+    flex-direction: row;
+}
+
+.returnButton{
+    margin-top: 40px;
+    background-color: blue;
+    border: none;
+    font-size: 20px;
+    
+}
+
+.returnButton:hover{
+    color :white;
+    font-size: 20px;
+}
+
+
+.contentEditProject{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.h2EditProject{
+    margin : 20px 0;
+    text-align: center;
+}
+
+.buttonAddScreen{
+    align-self: flex-end;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.formScreenshotContainer{
+    display: flex;
+    flex-direction: column;
+}
+.screenshot{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin : 20px 0;
+}
+.buttonsScreenshot{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+.addScreenForm{
+    display: flex;
+    flex-direction: column;
+    
+}
+.form-inputScreen{
+    width: 300px;
+}
+.h3AddScreenshot{
+    text-align: center;
+}
+
+.buttonScreen{
+    margin-bottom: 10px;
+}
+.button-send{
+    width: 90px;
+}

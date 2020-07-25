@@ -1,0 +1,18 @@
+.NewProjectPage{
+    display : flex;
+    flex-direction: row;
+}
+.returnMenu{
+    background-color: blue;
+    min-height: 100vh;
+    width: 150px;
+}
+.contentNewProject{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.h2NewProject{
+    margin : 20px 0;
+    text-align: center;
+}

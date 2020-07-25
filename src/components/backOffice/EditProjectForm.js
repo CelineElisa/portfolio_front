@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-//import "./Footer.css";
+import './EditProject.css'
 
 function EditProjectForm({ setShowEditProjectModal, projectId }) {
   const [data, setData] = useState(null)
@@ -10,7 +10,7 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
   const [newScreenshot, setNewScreenShot] = useState({
     name: '',
     url: '',
-    id_project : `${projectId}`
+    id_project: `${projectId}`,
   })
 
   const getProject = () => {
@@ -26,13 +26,11 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
   }
 
   const handleChange = (e) => {
-    //console.log('form changed')
     const { name, value } = e.target
     setData({ ...data, [name]: value })
   }
 
   const handleSubmit = (e) => {
-    //console.log('formulaire soumis')
     e.preventDefault()
     axios
       .put(`http://localhost:8080/api/projects/${projectId}`, data)
@@ -41,23 +39,21 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
   }
 
   const handleChangeScreenshot = (e, field) => {
-    // console.log(field)
     const upScreenId = parseInt(e.target.name)
     const upScreenValue = e.target.value
     const index = screenshots.findIndex((project) => project.id === upScreenId)
-    //console.log(index)
     const screenshotsTemp = [...screenshots]
-    //console.log('screen temp', screenshotsTemp)
-    screenshotsTemp[index][field]= upScreenValue
-    //console.log('state', screenshots)
+    screenshotsTemp[index][field] = upScreenValue
   }
 
   const handleEditScreenshot = (e) => {
     e.preventDefault()
     const idScreenshot = parseInt(e.target.id)
-    let body = screenshots.filter( screenshot => screenshot.id === idScreenshot)
-    //console.log(body)
-    axios.put(`http://localhost:8080/api/screenshots/${idScreenshot}`, body[0])
+    let body = screenshots.filter(
+      (screenshot) => screenshot.id === idScreenshot
+    )
+    axios
+      .put(`http://localhost:8080/api/screenshots/${idScreenshot}`, body[0])
       .then((res) => alert(`Le screenshot a bien été modifié`))
       .catch((err) => alert(`erreur : ${err.response.data} `))
   }
@@ -65,10 +61,13 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
   const handleDeleteScreenshot = (e) => {
     e.preventDefault()
     const idScreenshot = parseInt(e.target.id)
-    axios.delete(`http://localhost:8080/api/screenshots/${idScreenshot}`)
+    axios
+      .delete(`http://localhost:8080/api/screenshots/${idScreenshot}`)
       .then((res) => {
         let screenshotsTemp = [...screenshots]
-        screenshotsTemp = screenshotsTemp.filter(screenshot => screenshot.id != idScreenshot)
+        screenshotsTemp = screenshotsTemp.filter(
+          (screenshot) => screenshot.id !== idScreenshot
+        )
         setScreenshots(screenshotsTemp)
       })
       .then((res) => alert('Le screenshot a été supprimé'))
@@ -87,14 +86,15 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
 
   const handleSubmitNewScreenshot = (e) => {
     e.preventDefault()
-    axios.post(`http://localhost:8080/api/screenshots/`, newScreenshot)
-    .then((res) => {
-      let screenshotsTemp = [...screenshots]
-      screenshotsTemp.push(res.data)
-      setScreenshots(screenshotsTemp)
-    })
-    .then((res) => alert(`Nouveau screenshot ajouté`))
-    .catch((err) => alert(`erreur : ${err.response.data} `))
+    axios
+      .post(`http://localhost:8080/api/screenshots/`, newScreenshot)
+      .then((res) => {
+        let screenshotsTemp = [...screenshots]
+        screenshotsTemp.push(res.data)
+        setScreenshots(screenshotsTemp)
+      })
+      .then((res) => alert(`Nouveau screenshot ajouté`))
+      .catch((err) => alert(`erreur : ${err.response.data} `))
     setShowAddScreen(false)
   }
 
@@ -102,12 +102,15 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
   useEffect(() => getScreenshots(), [])
 
   return data ? (
-    <div>
-      <button onClick={() => setShowEditProjectModal(false)}>
+    <div className="EditProject">
+      <div className="returnMenu">
+      <button className="returnButton" onClick={() => setShowEditProjectModal(false)}>
         Retour à la liste des projets
       </button>
+      </div>
+      <div className="contentEditProject">
       <form className='form' onSubmit={handleSubmit}>
-        <h2>Modifier le projet</h2>
+        <h2 className="h2EditProject">Modifier le projet</h2>
         <hr className='hr-col' />
         <div className='form-container'>
           <div className='divForm'>
@@ -122,7 +125,7 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
             />
           </div>
           <div className='divForm'>
-            <label htmlFor='techno'>technologies utilisées</label>
+            <label htmlFor='techno'>Technologies utilisées</label>
             <input
               type='text'
               name='techno'
@@ -133,7 +136,7 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
             />
           </div>
           <div className='divForm'>
-            <label htmlFor='url_app'>lien du site</label>
+            <label htmlFor='url_app'>Lien du site</label>
             <input
               type='text'
               name='url_app'
@@ -144,7 +147,7 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
             />
           </div>
           <div className='divForm'>
-            <label htmlFor='url_pict'>lien de la Photo</label>
+            <label htmlFor='url_pict'>Lien de la Photo</label>
             <input
               type='text'
               name='url_pict'
@@ -154,28 +157,6 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
               onChange={handleChange}
             />
           </div>
-          {/* <div className='divForm'>
-            <label htmlFor='url_pict2'>lien de la Photo num 2</label>
-            <input
-              type='text'
-              name='url_pict2'
-              id='url_pict2'
-              value={data.url_pict2}
-              className='form-input'
-              onChange={handleChange}
-            />
-          </div>
-          <div className='divForm'>
-            <label htmlFor='url_pict3'>lien de la Photo num 3</label>
-            <input
-              type='text'
-              name='url_pict3'
-              id='url_pict3'
-              value={data.url_pict3}
-              className='form-input'
-              onChange={handleChange}
-            />
-          </div> */}
           <div className='textareaForm'>
             <label htmlFor='description' className='message-flex'>
               Description
@@ -192,81 +173,87 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
           <input type='submit' value='ENVOYER' className='button-send' />
         </div>
       </form>
+
       {screenshots ? (
-        <div>
-        <form className='form' onSubmit={handleSubmit}>
-          <h2>Modifier les screenshots du projet</h2>
-          <hr className='hr-col' />
-          {screenshots.map((screenshot) => (
-            <div>
+        <div className="formScreenshotContainer">
+          <form className='form' onSubmit={handleSubmit}>
+            <h2 className="h2EditProject">Modifier les screenshots du projet</h2>
+            <hr className='hr-col' />
+            {screenshots.map((screenshot) => (
+              <div key={screenshot.id} className="screenshot">
+                <div>
+                <div className='divForm'>
+                  <label htmlFor='name'>Nom de l'image</label>
+                  <input
+                    type='text'
+                    name={screenshot.id}
+                    id='name'
+                    placeholder={screenshot.name}
+                    className='form-inputScreen'
+                    onChange={(e) => handleChangeScreenshot(e, 'name')}
+                  />
+                </div>
+                <div className='divForm'>
+                  <label htmlFor='url'>Lien de l'image</label>
+                  <input
+                    type='text'
+                    name={screenshot.id}
+                    id='url'
+                    placeholder={screenshot.url}
+                    className='form-inputScreen'
+                    onChange={(e) => handleChangeScreenshot(e, 'url')}
+                  />
+                </div>
+                </div>
+                <div className="buttonsScreenshot">
+                <button className="buttonScreen" id={screenshot.id} onClick={handleEditScreenshot}>
+                  Modifier
+                </button>
+                <button id={screenshot.id} onClick={handleDeleteScreenshot}>
+                  Supprimer
+                </button>
+                </div>
+              </div>
+            ))}
+          </form>
+          <button className="buttonAddScreen" onClick={handleAddScreenshot}>Ajouter un screenshot</button>
+          {showAddScreen ? (
+            <div className="addScreenForm">
+              <h3 className="h3AddScreenshot">Ajouter un screenshot</h3>
               <div className='divForm'>
-                <label htmlFor="name">nom de l'image</label>
+                <label htmlFor='name'>Nom de l'image</label>
                 <input
                   type='text'
-                  name={screenshot.id}
-                  id="name"
-                  placeholder={screenshot.name}
+                  name='name'
+                  id='name'
+                  value={newScreenshot.name}
                   className='form-input'
-                  onChange={ (e) => handleChangeScreenshot(e, 'name')}
+                  onChange={handleChangeNewScreenshot}
                 />
               </div>
               <div className='divForm'>
-                <label htmlFor="url">lien de l'image</label>
+                <label htmlFor='url'>Lien de l'image</label>
                 <input
                   type='text'
-                  name={screenshot.id}
-                  id="url"
-                  placeholder={screenshot.url}
+                  name='url'
+                  id='url'
+                  value={newScreenshot.url}
                   className='form-input'
-                  onChange={(e) => handleChangeScreenshot (e, 'url')}
+                  onChange={handleChangeNewScreenshot}
                 />
               </div>
-              <button id={screenshot.id} onClick={handleEditScreenshot}>
-                Modifier
-              </button>
-              <button id={screenshot.id} onClick={handleDeleteScreenshot}>
-                Supprimer
+              <button  className="buttonAddScreen" onClick={handleSubmitNewScreenshot}>
+                Valider le nouveau screenshot
               </button>
             </div>
-          ))}
-        </form>
-        <button onClick={handleAddScreenshot}>
-           Ajouter un screenshot
-        </button>
-        {showAddScreen ? (
-       <div>
-       <div className='divForm'>
-         <label htmlFor="name">nom de l'image</label>
-         <input
-           type='text'
-           name="name"
-           id="name"
-           value={newScreenshot.name}
-           className='form-input'
-           onChange={handleChangeNewScreenshot}
-         />
-       </div>
-       <div className='divForm'>
-         <label htmlFor="url">lien de l'image</label>
-         <input
-           type='text'
-           name="url"
-           id="url"
-           value={newScreenshot.url}
-           className='form-input'
-           onChange={handleChangeNewScreenshot}
-         />
-       </div>
-       <button onClick={handleSubmitNewScreenshot}>
-         valider le nouveau screenshot
-       </button>
-       </div>
-      ) : (<></>)}
+          ) : (
+            <></>
+          )}
         </div>
       ) : (
-      <></>
+        <></>
       )}
-      {/* {console.log(screenshots)} */}
+    </div>
     </div>
   ) : (
     'loading'

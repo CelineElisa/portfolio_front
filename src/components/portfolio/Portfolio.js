@@ -53,7 +53,6 @@ const About = () => {
           <ProjectModal setModal={setModal} modal={modal} project={project[0]} screenshots={screensProject}/>
           : <></>
           }
-          {/* {console.log(screensProject)} */}
     </div>
   ) : ("loading")
 }

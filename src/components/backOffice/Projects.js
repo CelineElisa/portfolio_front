@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-//import { Link } from 'react-router-dom'
 import AdminNav from './AdminNav'
 import NewProjectForm from './NewProjectForm'
 import EditProjectForm from './EditProjectForm'
 
-//import "./Footer.css";
+import "./Projects.css";
 
 function Projects() {
 
@@ -20,16 +19,11 @@ function Projects() {
 
   const handleDelete = (e) => {
       const answer = window.confirm('Etes vous sûr de vouloir supprimer ce projet ?')
-      //console.log(e.target.id)
       if (answer){
         const idProject = e.target.id
-          //console.log('je veux supprimer ce projet')
           axios.delete(`http://localhost:8080/api/projects/${idProject}`)
           .then((res) => alert('Le projet a été supprimé'))
       }
-      //  else {
-      //   console.log('je ne veux pas supprimer ce projet !!!!')
-      // }
   }
 
   const handleEdit = (e) => {
@@ -44,18 +38,23 @@ function Projects() {
     ) : ( showEditProjectModal ? (
         <div><EditProjectForm setShowEditProjectModal={setShowEditProjectModal} projectId={projectId} /></div>
     ) :
-    <div className='adminHome'>
+    <div className='adminProjects'>
       <AdminNav />
-      <h2>Mes projets</h2>
+      <div className="adminProjectsContainer">
+      <div className="adminProjectsContainer2">
+      <h2 className="h2Projects">Mes projets</h2>
       {projects.map( project => (
-          <div key={project.id} >
-              {project.id}, {project.name}, {project.techno} 
-              <button id={project.id} onClick={handleDelete}> Supprimer </button>
-              <button id={project.id} onClick={handleEdit}> Editer </button>
+          <div key={project.id} className="projectDiv">
+              <p>{project.id}, {project.name}, {project.techno} </p>
+              <div >
+              <button className="buttonProject" id={project.id} onClick={handleEdit}> Editer </button>
+              <button className="buttonProject" id={project.id} onClick={handleDelete}> Supprimer </button>
+              </div>
           </div>
       ))}
-      <button onClick={() => setShowNewProjectModal(true)}>ajouter un projet</button>
-      {/* {console.log(projects)} */}
+      <button className="buttonNewProject" onClick={() => setShowNewProjectModal(true)}>Ajouter un projet</button>
+      </div>
+      </div>
     </div>
   )
   ) : "loading"

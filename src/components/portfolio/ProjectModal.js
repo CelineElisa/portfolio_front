@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState} from "react"
 
 import "./Portfolio.css";
 
@@ -7,8 +7,7 @@ const ProjectModal = ({ setModal, modal, project, screenshots }) => {
  
   const showPict = (arg) => {
     let nbPicts = screenshots.length
-    // console.log(nbPicts)
-    // console.log(pict)
+   
     if (arg === 1 && pict === nbPicts) {
       setPict(1);
     } else if (arg === -1 && pict === 1) {
@@ -32,7 +31,7 @@ const ProjectModal = ({ setModal, modal, project, screenshots }) => {
             &lt;
           </button>
           {screenshots.map( screenshot => (
-            <div>
+            <div key={screenshot.id}>
              <img
              className={pict === screenshot.id_carousel ? "carouselPict" : "nonActive"}
              src={`images/${screenshot.url}`}
@@ -40,21 +39,6 @@ const ProjectModal = ({ setModal, modal, project, screenshots }) => {
            />
            </div>
           ))}
-          {/* <img
-            className={pict === 1 ? "carouselPict" : "nonActive"}
-            src={`images/${project.url_pict}`}
-            alt="Project Pixie Wilders"
-          />
-          <img
-            className={pict === 2 ? "carouselPict" : "nonActive"}
-            src={`images/${project.url_pict2}`}
-            alt="Project Pixie Wilders"
-          />
-          <img
-            className={pict === 3 ? "carouselPict phonePict" : "nonActive"}
-            src={`images/${project.url_pict3}`}
-            alt="Project Pixie Wilders phone"
-          /> */}
           <button className="buttonPict" onClick={() => showPict(1)}>
             &gt;
           </button>
@@ -73,7 +57,6 @@ const ProjectModal = ({ setModal, modal, project, screenshots }) => {
           Voir le site{" "}
         </a>
       </div>
-      {/* {console.log(screenshots)} */}
     </div>
   ) 
 };
