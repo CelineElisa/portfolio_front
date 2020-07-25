@@ -24,8 +24,7 @@ const [data, setData] = useState(null)
     e.preventDefault()
   axios
     .put(`http://localhost:8080/api/profile/1`, data)
-    .then((res) => res.data)
-    .then((res) => alert(`${res}`))
+    .then((res) => alert(`Le profil a bien été mis à jour`))
     .catch((err) => alert(`erreur : ${err.response.data} `))
 }
 

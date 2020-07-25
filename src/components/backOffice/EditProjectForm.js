@@ -26,18 +26,17 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
   }
 
   const handleChange = (e) => {
-    console.log('form changed')
+    //console.log('form changed')
     const { name, value } = e.target
     setData({ ...data, [name]: value })
   }
 
   const handleSubmit = (e) => {
-    console.log('formulaire soumis')
+    //console.log('formulaire soumis')
     e.preventDefault()
     axios
       .put(`http://localhost:8080/api/projects/${projectId}`, data)
-      .then((res) => res.data)
-      .then((res) => alert(`${res}`))
+      .then((res) => alert(`Le projet a bien été modifié`))
       .catch((err) => alert(`erreur : ${err.response.data} `))
   }
 
@@ -59,8 +58,7 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
     let body = screenshots.filter( screenshot => screenshot.id === idScreenshot)
     //console.log(body)
     axios.put(`http://localhost:8080/api/screenshots/${idScreenshot}`, body[0])
-      .then((res) => res.data)
-      .then((res) => alert(`${res}`))
+      .then((res) => alert(`Le screenshot a bien été modifié`))
       .catch((err) => alert(`erreur : ${err.response.data} `))
   }
 
@@ -68,6 +66,11 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
     e.preventDefault()
     const idScreenshot = parseInt(e.target.id)
     axios.delete(`http://localhost:8080/api/screenshots/${idScreenshot}`)
+      .then((res) => {
+        let screenshotsTemp = [...screenshots]
+        screenshotsTemp = screenshotsTemp.filter(screenshot => screenshot.id != idScreenshot)
+        setScreenshots(screenshotsTemp)
+      })
       .then((res) => alert('Le screenshot a été supprimé'))
       .catch((err) => alert(`erreur : ${err.response.data} `))
   }
@@ -84,10 +87,13 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
 
   const handleSubmitNewScreenshot = (e) => {
     e.preventDefault()
-    console.log(newScreenshot)
     axios.post(`http://localhost:8080/api/screenshots/`, newScreenshot)
-    .then((res) => res.data)
-    .then((res) => alert(`${res}`))
+    .then((res) => {
+      let screenshotsTemp = [...screenshots]
+      screenshotsTemp.push(res.data)
+      setScreenshots(screenshotsTemp)
+    })
+    .then((res) => alert(`Nouveau screenshot ajouté`))
     .catch((err) => alert(`erreur : ${err.response.data} `))
     setShowAddScreen(false)
   }

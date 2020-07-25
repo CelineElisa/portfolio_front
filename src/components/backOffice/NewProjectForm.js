@@ -10,9 +10,7 @@ function NewProjectForm({ setShowNewProjectModal }) {
         techno: 'non renseigné',
         url_pict: 'non renseigné',
         url_app: 'non renseigné',
-        description: 'non renseigné',
-        url_pict2 : 'non renseigné',
-        url_pict3 : 'non renseigné'
+        description: 'non renseigné'
       })
 
   const handleSubmit = (e) => {
@@ -20,8 +18,7 @@ function NewProjectForm({ setShowNewProjectModal }) {
       e.preventDefault()
     axios
       .post('http://localhost:8080/api/projects', data)
-      .then((res) => res.data)
-      .then((res) => alert(`${res}`))
+      .then((res) => alert(`Nouveau projet ajouté`))
       .catch((err) => alert(`erreur : ${err.response.data} `))
   }
 
