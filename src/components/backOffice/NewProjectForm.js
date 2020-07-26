@@ -31,15 +31,18 @@ function NewProjectForm({ setShowNewProjectModal, projects, setProjects }) {
   }
 
   return (
-    <div className="NewProjectPage">
-      <div className="returnMenu">
-        <button className="returnButton" onClick={() => setShowNewProjectModal(false)}>
+    <div className='NewProjectPage'>
+      <div className='returnMenu'>
+        <button
+          className='returnButton'
+          onClick={() => setShowNewProjectModal(false)}
+        >
           Retour à la liste des projets
         </button>
       </div>
-      <div className="contentNewProject">
+      <div className='contentNewProject'>
         <form className='form' onSubmit={handleSubmit}>
-          <h2 className="h2NewProject">Ajouter un nouveau projet</h2>
+          <h2 className='h2NewProject'>Ajouter un nouveau projet</h2>
           <hr className='hr-col' />
           <div className='form-container'>
             <div className='divForm'>

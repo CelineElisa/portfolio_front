@@ -102,158 +102,172 @@ function EditProjectForm({ setShowEditProjectModal, projectId }) {
   useEffect(() => getScreenshots(), [])
 
   return data ? (
-    <div className="EditProject">
-      <div className="returnMenu">
-      <button className="returnButton" onClick={() => setShowEditProjectModal(false)}>
-        Retour à la liste des projets
-      </button>
+    <div className='EditProject'>
+      <div className='returnMenu'>
+        <button
+          className='returnButton'
+          onClick={() => setShowEditProjectModal(false)}
+        >
+          Retour à la liste des projets
+        </button>
       </div>
-      <div className="contentEditProject">
-      <form className='form' onSubmit={handleSubmit}>
-        <h2 className="h2EditProject">Modifier le projet</h2>
-        <hr className='hr-col' />
-        <div className='form-container'>
-          <div className='divForm'>
-            <label htmlFor='name'>Nom du projet</label>
-            <input
-              type='text'
-              name='name'
-              id='name'
-              value={data.name}
-              className='form-input'
-              onChange={handleChange}
-            />
+      <div className='contentEditProject'>
+        <form className='form' onSubmit={handleSubmit}>
+          <h2 className='h2EditProject'>Modifier le projet</h2>
+          <hr className='hr-col' />
+          <div className='form-container'>
+            <div className='divForm'>
+              <label htmlFor='name'>Nom du projet</label>
+              <input
+                type='text'
+                name='name'
+                id='name'
+                value={data.name}
+                className='form-input'
+                onChange={handleChange}
+              />
+            </div>
+            <div className='divForm'>
+              <label htmlFor='techno'>Technologies utilisées</label>
+              <input
+                type='text'
+                name='techno'
+                id='techno'
+                value={data.techno}
+                className='form-input'
+                onChange={handleChange}
+              />
+            </div>
+            <div className='divForm'>
+              <label htmlFor='url_app'>Lien du site</label>
+              <input
+                type='text'
+                name='url_app'
+                id='url_app'
+                value={data.url_app}
+                className='form-input'
+                onChange={handleChange}
+              />
+            </div>
+            <div className='divForm'>
+              <label htmlFor='url_pict'>Lien de la Photo</label>
+              <input
+                type='text'
+                name='url_pict'
+                id='url_pict'
+                value={data.url_pict}
+                className='form-input'
+                onChange={handleChange}
+              />
+            </div>
+            <div className='textareaForm'>
+              <label htmlFor='description' className='message-flex'>
+                Description
+              </label>
+              <textarea
+                name='description'
+                id='description'
+                value={data.description}
+                className='form-textarea'
+                onChange={handleChange}
+              />
+              <br />
+            </div>
+            <input type='submit' value='ENVOYER' className='button-send' />
           </div>
-          <div className='divForm'>
-            <label htmlFor='techno'>Technologies utilisées</label>
-            <input
-              type='text'
-              name='techno'
-              id='techno'
-              value={data.techno}
-              className='form-input'
-              onChange={handleChange}
-            />
-          </div>
-          <div className='divForm'>
-            <label htmlFor='url_app'>Lien du site</label>
-            <input
-              type='text'
-              name='url_app'
-              id='url_app'
-              value={data.url_app}
-              className='form-input'
-              onChange={handleChange}
-            />
-          </div>
-          <div className='divForm'>
-            <label htmlFor='url_pict'>Lien de la Photo</label>
-            <input
-              type='text'
-              name='url_pict'
-              id='url_pict'
-              value={data.url_pict}
-              className='form-input'
-              onChange={handleChange}
-            />
-          </div>
-          <div className='textareaForm'>
-            <label htmlFor='description' className='message-flex'>
-              Description
-            </label>
-            <textarea
-              name='description'
-              id='description'
-              value={data.description}
-              className='form-textarea'
-              onChange={handleChange}
-            />
-            <br />
-          </div>
-          <input type='submit' value='ENVOYER' className='button-send' />
-        </div>
-      </form>
+        </form>
 
-      {screenshots ? (
-        <div className="formScreenshotContainer">
-          <form className='form' onSubmit={handleSubmit}>
-            <h2 className="h2EditProject">Modifier les screenshots du projet</h2>
-            <hr className='hr-col' />
-            {screenshots.map((screenshot) => (
-              <div key={screenshot.id} className="screenshot">
-                <div>
+        {screenshots ? (
+          <div className='formScreenshotContainer'>
+            <form className='form' onSubmit={handleSubmit}>
+              <h2 className='h2EditProject'>
+                Modifier les screenshots du projet
+              </h2>
+              <hr className='hr-col' />
+              {screenshots.map((screenshot) => (
+                <div key={screenshot.id} className='screenshot'>
+                  <div>
+                    <div className='divForm'>
+                      <label htmlFor='name'>Nom de l'image</label>
+                      <input
+                        type='text'
+                        name={screenshot.id}
+                        id='name'
+                        placeholder={screenshot.name}
+                        className='form-inputScreen'
+                        onChange={(e) => handleChangeScreenshot(e, 'name')}
+                      />
+                    </div>
+                    <div className='divForm'>
+                      <label htmlFor='url'>Lien de l'image</label>
+                      <input
+                        type='text'
+                        name={screenshot.id}
+                        id='url'
+                        placeholder={screenshot.url}
+                        className='form-inputScreen'
+                        onChange={(e) => handleChangeScreenshot(e, 'url')}
+                      />
+                    </div>
+                  </div>
+                  <div className='buttonsScreenshot'>
+                    <button
+                      className='buttonScreen'
+                      id={screenshot.id}
+                      onClick={handleEditScreenshot}
+                    >
+                      Modifier
+                    </button>
+                    <button id={screenshot.id} onClick={handleDeleteScreenshot}>
+                      Supprimer
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </form>
+            <button className='buttonAddScreen' onClick={handleAddScreenshot}>
+              Ajouter un screenshot
+            </button>
+            {showAddScreen ? (
+              <div className='addScreenForm'>
+                <h3 className='h3AddScreenshot'>Ajouter un screenshot</h3>
                 <div className='divForm'>
                   <label htmlFor='name'>Nom de l'image</label>
                   <input
                     type='text'
-                    name={screenshot.id}
+                    name='name'
                     id='name'
-                    placeholder={screenshot.name}
-                    className='form-inputScreen'
-                    onChange={(e) => handleChangeScreenshot(e, 'name')}
+                    value={newScreenshot.name}
+                    className='form-input'
+                    onChange={handleChangeNewScreenshot}
                   />
                 </div>
                 <div className='divForm'>
                   <label htmlFor='url'>Lien de l'image</label>
                   <input
                     type='text'
-                    name={screenshot.id}
+                    name='url'
                     id='url'
-                    placeholder={screenshot.url}
-                    className='form-inputScreen'
-                    onChange={(e) => handleChangeScreenshot(e, 'url')}
+                    value={newScreenshot.url}
+                    className='form-input'
+                    onChange={handleChangeNewScreenshot}
                   />
                 </div>
-                </div>
-                <div className="buttonsScreenshot">
-                <button className="buttonScreen" id={screenshot.id} onClick={handleEditScreenshot}>
-                  Modifier
+                <button
+                  className='buttonAddScreen'
+                  onClick={handleSubmitNewScreenshot}
+                >
+                  Valider le nouveau screenshot
                 </button>
-                <button id={screenshot.id} onClick={handleDeleteScreenshot}>
-                  Supprimer
-                </button>
-                </div>
               </div>
-            ))}
-          </form>
-          <button className="buttonAddScreen" onClick={handleAddScreenshot}>Ajouter un screenshot</button>
-          {showAddScreen ? (
-            <div className="addScreenForm">
-              <h3 className="h3AddScreenshot">Ajouter un screenshot</h3>
-              <div className='divForm'>
-                <label htmlFor='name'>Nom de l'image</label>
-                <input
-                  type='text'
-                  name='name'
-                  id='name'
-                  value={newScreenshot.name}
-                  className='form-input'
-                  onChange={handleChangeNewScreenshot}
-                />
-              </div>
-              <div className='divForm'>
-                <label htmlFor='url'>Lien de l'image</label>
-                <input
-                  type='text'
-                  name='url'
-                  id='url'
-                  value={newScreenshot.url}
-                  className='form-input'
-                  onChange={handleChangeNewScreenshot}
-                />
-              </div>
-              <button  className="buttonAddScreen" onClick={handleSubmitNewScreenshot}>
-                Valider le nouveau screenshot
-              </button>
-            </div>
-          ) : (
-            <></>
-          )}
-        </div>
-      ) : (
-        <></>
-      )}
-    </div>
+            ) : (
+              <></>
+            )}
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
     </div>
   ) : (
     'loading'
